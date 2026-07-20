@@ -452,6 +452,25 @@ main {
   letter-spacing: -0.01em;
 }
 
+.card-note {
+  margin: -0.35rem 0 0.85rem;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+/* The install one-liner sits full width, above the supporting cards. */
+.code-wide {
+  margin-bottom: 1rem;
+  background: linear-gradient(180deg, #0d1017, #0a0c10);
+}
+
+.code-wide code {
+  font-size: 0.86rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
 .code {
   margin: 0;
   padding: 1rem 1.1rem;

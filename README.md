@@ -31,21 +31,36 @@ Audio
 
 ## Install
 
-You need [ffprobe](https://ffmpeg.org) on `PATH`, or next to the binary as a sidecar.
+```bash
+curl -fsSL https://raw.githubusercontent.com/Alyetama/vidinfo/main/install.sh | sh
+```
+
+That grabs the right binary for macOS or Linux (Intel or ARM) and drops it in `/usr/local/bin`, or `~/.local/bin` if that needs root. Set `VIDINFO_BIN_DIR` to put it somewhere else.
+
+vidinfo reads files through [ffprobe](https://ffmpeg.org), so you need FFmpeg too. The installer says so if it is missing:
 
 ```bash
-# macOS / Linux (from source)
-cargo install --path .
-
-# ffprobe
-brew install ffmpeg   # macOS
-sudo apt install ffmpeg
+brew install ffmpeg        # macOS
+sudo apt install ffmpeg    # Debian / Ubuntu
 ```
+
+ffprobe can also sit next to the vidinfo binary as a sidecar instead of being on `PATH`.
+
+<details>
+<summary>From source</summary>
+
+```bash
+cargo install --git https://github.com/Alyetama/vidinfo
+```
+
+or, in a clone:
 
 ```bash
 cargo build --release
 ./target/release/vidinfo --help
 ```
+
+</details>
 
 ## Quick use
 

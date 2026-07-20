@@ -107,22 +107,24 @@
     <section id="install" class="section">
       <div class="section-head">
         <h2>Install</h2>
-        <p>One binary. Put <code>ffprobe</code> (from FFmpeg) on your <code>PATH</code>.</p>
+        <p>One command. macOS and Linux, Intel and ARM.</p>
       </div>
+      <pre class="code code-wide"><code>curl -fsSL https://raw.githubusercontent.com/Alyetama/vidinfo/main/install.sh | sh</code></pre>
       <div class="cards">
         <article class="card">
-          <h3>From source</h3>
-          <pre class="code"><code>git clone https://github.com/Alyetama/vidinfo
-cd vidinfo
-cargo install --path .</code></pre>
-        </article>
-        <article class="card">
           <h3>ffprobe</h3>
+          <p class="card-note">vidinfo reads files through FFmpeg's prober, so install that as well.</p>
           <pre class="code"><code># macOS
 brew install ffmpeg
 
 # Debian / Ubuntu
 sudo apt install ffmpeg</code></pre>
+        </article>
+        <article class="card">
+          <h3>From source</h3>
+          <p class="card-note">If you have a Rust toolchain and would rather build it yourself.</p>
+          <pre class="code"><code>cargo install --git \
+  https://github.com/Alyetama/vidinfo</code></pre>
         </article>
       </div>
     </section>
