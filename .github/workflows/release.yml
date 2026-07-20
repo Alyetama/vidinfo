@@ -4,6 +4,8 @@ on:
   push:
     tags:
       - "v*"
+  # Lets a release be rebuilt by hand: run the workflow against the tag you want.
+  workflow_dispatch:
 
 permissions:
   contents: write
