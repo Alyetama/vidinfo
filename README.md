@@ -2,6 +2,8 @@
 
 Readable ffprobe for the terminal.
 
+![vidinfo showing a single-file report and a folder comparison table](docs/demo.gif)
+
 A small Rust binary that prints media details in labeled sections: container, video, audio, subs, chapters. For folders you get one-line summaries or a comparison table. For scripts, normalized JSON. The parsing is ffprobe's, so the numbers match what FFmpeg sees.
 
 ```bash
