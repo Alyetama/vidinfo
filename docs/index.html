@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>vidinfo: readable ffprobe for the terminal</title>
+  <meta name="description" content="Rust CLI that prints video file details in clear terminal sections. Uses ffprobe under the hood." />
+  <meta name="theme-color" content="#0b0d11" />
+  <meta property="og:title" content="vidinfo" />
+  <meta property="og:description" content="Readable ffprobe for the terminal. Inspect video files without raw probe dumps." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0d11'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='monospace' font-size='14' font-weight='700' fill='%23e8a838'%3Evi%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="glow" aria-hidden="true"></div>
+
+  <header class="top">
+    <a class="brand" href="#">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">vidinfo</span>
+    </a>
+    <nav class="nav">
+      <a href="#install">Install</a>
+      <a href="#usage">Usage</a>
+      <a href="#flags">Flags</a>
+      <a class="nav-gh" href="https://github.com/Alyetama/vidinfo" rel="noopener">GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">
+        <span class="tc" id="timecode" aria-hidden="true">00:00:00:00</span>
+        <span>CLI · Rust · ffprobe</span>
+      </p>
+      <h1>
+        Readable ffprobe<br />
+        <em>for the terminal</em>
+      </h1>
+      <p class="lede">
+        Print video file details in labeled sections instead of a raw ffprobe dump.
+        Works on one file or a whole folder. Compare tables, compact lines, or JSON you can pipe to jq.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#install">Install</a>
+        <a class="btn btn-ghost" href="https://github.com/Alyetama/vidinfo" rel="noopener">Source</a>
+      </div>
+
+      <div class="terminal" role="img" aria-label="Example vidinfo terminal output">
+        <div class="terminal-bar">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <span class="terminal-title">vidinfo · clip.mp4</span>
+        </div>
+        <pre class="terminal-body" id="term"><span class="t-cmd">$ vidinfo clip.mp4</span>
+<span class="t-file">clip.mp4</span>
+  <span class="t-dim">/Users/you/Movies/clip.mp4</span>
+
+<span class="t-sec">Container</span>
+  <span class="t-key">Format</span>         <span class="t-val">MP4</span>
+  <span class="t-key">Size</span>           <span class="t-val">1.14 MB</span>
+  <span class="t-key">Duration</span>       <span class="t-val">00:00:13.265</span>
+  <span class="t-key">Bitrate</span>        <span class="t-val">722 kbps</span>
+  <span class="t-key">Streams</span>        <span class="t-val">1 video, 1 audio, 0 subtitle</span>
+
+<span class="t-sec">Video</span>
+  <span class="t-key">Codec</span>          <span class="t-val">H.264 High</span>
+  <span class="t-key">Resolution</span>     <span class="t-val">1280x720 (16:9)</span>
+  <span class="t-key">Frame rate</span>     <span class="t-val">29.970 fps [CFR]</span>
+  <span class="t-key">Pixel format</span>   <span class="t-val">yuv420p</span>
+  <span class="t-key">Color</span>          <span class="t-val">bt709 / tv</span>
+  <span class="t-key">Bit depth</span>      <span class="t-val">8-bit</span>
+  <span class="t-key">Bitrate</span>        <span class="t-val">586 kbps</span>
+
+<span class="t-sec">Audio</span>
+  <span class="t-key">Codec</span>          <span class="t-val">AAC LC</span>
+  <span class="t-key">Sample rate</span>    <span class="t-val">48000 Hz</span>
+  <span class="t-key">Channels</span>       <span class="t-val">stereo</span>
+  <span class="t-key">Bitrate</span>        <span class="t-val">128 kbps</span>
+<span class="t-cursor" aria-hidden="true"></span></pre>
+      </div>
+    </section>
+
+    <section class="strip" aria-label="Highlights">
+      <div class="strip-item">
+        <strong>Sections</strong>
+        <span>Container, video, audio, subs, and chapters as separate blocks</span>
+      </div>
+      <div class="strip-item">
+        <strong>Batch</strong>
+        <span>Compare tables, compact lines, sort by size or duration</span>
+      </div>
+      <div class="strip-item">
+        <strong>JSON</strong>
+        <span><code>--json</code> uses stable field names, not raw ffprobe keys</span>
+      </div>
+      <div class="strip-item">
+        <strong>ffprobe</strong>
+        <span>Shells out to ffprobe for codec and container parsing</span>
+      </div>
+    </section>
+
+    <section id="install" class="section">
+      <div class="section-head">
+        <h2>Install</h2>
+        <p>One binary. Put <code>ffprobe</code> (from FFmpeg) on your <code>PATH</code>.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <h3>From source</h3>
+          <pre class="code"><code>git clone https://github.com/Alyetama/vidinfo
+cd vidinfo
+cargo install --path .</code></pre>
+        </article>
+        <article class="card">
+          <h3>ffprobe</h3>
+          <pre class="code"><code># macOS
+brew install ffmpeg
+
+# Debian / Ubuntu
+sudo apt install ffmpeg</code></pre>
+        </article>
+      </div>
+    </section>
+
+    <section id="usage" class="section">
+      <div class="section-head">
+        <h2>Usage</h2>
+        <p>Pass files, folders, or globs. If one file fails in a batch, the others still run.</p>
+      </div>
+      <div class="cmd-grid">
+        <div class="cmd">
+          <span class="cmd-label">One file</span>
+          <code>vidinfo clip.mp4</code>
+        </div>
+        <div class="cmd">
+          <span class="cmd-label">Folder summary</span>
+          <code>vidinfo --compact ./clips/</code>
+        </div>
+        <div class="cmd">
+          <span class="cmd-label">Compare</span>
+          <code>vidinfo a.mp4 b.mp4 c.mkv</code>
+        </div>
+        <div class="cmd">
+          <span class="cmd-label">JSON to jq</span>
+          <code>vidinfo --json clip.mp4 | jq .</code>
+        </div>
+        <div class="cmd">
+          <span class="cmd-label">Field filter</span>
+          <code>vidinfo --fields codec,resolution clip.mp4</code>
+        </div>
+        <div class="cmd">
+          <span class="cmd-label">Recursive</span>
+          <code>vidinfo -r --sort-by size ~/Movies/</code>
+        </div>
+      </div>
+    </section>
+
+    <section id="flags" class="section">
+      <div class="section-head">
+        <h2>Flags</h2>
+        <p>Not many options. The defaults are usually enough.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Flag</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>PATHS…</code></td><td>Files, directories, or globs</td></tr>
+            <tr><td><code>-r, --recursive</code></td><td>Walk subdirectories</td></tr>
+            <tr><td><code>-c, --compact</code></td><td>One line per file</td></tr>
+            <tr><td><code>--compare</code></td><td>Side-by-side comparison table</td></tr>
+            <tr><td><code>--sort-by</code></td><td><code>name</code>, <code>duration</code>, <code>size</code>, <code>resolution</code>, <code>bitrate</code>, or <code>codec</code></td></tr>
+            <tr><td><code>--json</code></td><td>Normalized structured output</td></tr>
+            <tr><td><code>--fields</code></td><td>Comma-separated sections or fields</td></tr>
+            <tr><td><code>--color</code> / <code>--no-color</code></td><td>Force ANSI on or off</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="footnote">Exit <code>0</code> ok · <code>1</code> all failed · <code>2</code> partial · <code>127</code> ffprobe missing</p>
+    </section>
+
+    <section class="section out">
+      <div class="section-head">
+        <h2>Out of scope</h2>
+        <p>Read-only. No playback, thumbnails, waveforms, or transcoding.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot-inner">
+      <span>vidinfo · MIT</span>
+      <a href="https://github.com/Alyetama/vidinfo" rel="noopener">github.com/Alyetama/vidinfo</a>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

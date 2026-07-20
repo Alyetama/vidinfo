@@ -1,0 +1,74 @@
+{
+    "streams": [
+        {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "High",
+            "codec_type": "video",
+            "codec_tag_string": "avc1",
+            "width": 1280,
+            "height": 592,
+            "coded_width": 1280,
+            "coded_height": 592,
+            "pix_fmt": "yuv420p",
+            "color_range": "tv",
+            "color_space": "bt709",
+            "color_transfer": "bt709",
+            "color_primaries": "bt709",
+            "r_frame_rate": "60000/1001",
+            "avg_frame_rate": "80600/2653",
+            "duration": "13.265000",
+            "bit_rate": "585754",
+            "bits_per_raw_sample": "8",
+            "nb_frames": "403",
+            "disposition": {
+                "default": 1,
+                "attached_pic": 0
+            },
+            "tags": {
+                "creation_time": "2022-11-24T01:08:36.000000Z",
+                "language": "und",
+                "handler_name": "Vireo Eyes v2.9.1",
+                "encoder": "AVC Coding"
+            }
+        },
+        {
+            "index": 1,
+            "codec_name": "aac",
+            "codec_long_name": "AAC (Advanced Audio Coding)",
+            "profile": "LC",
+            "codec_type": "audio",
+            "sample_fmt": "fltp",
+            "sample_rate": "44100",
+            "channels": 2,
+            "channel_layout": "stereo",
+            "bits_per_sample": 0,
+            "duration": "13.257143",
+            "bit_rate": "128299",
+            "nb_frames": "571",
+            "disposition": {
+                "default": 1
+            },
+            "tags": {
+                "creation_time": "2022-11-24T01:08:36.000000Z",
+                "language": "und"
+            }
+        }
+    ],
+    "chapters": [],
+    "format": {
+        "filename": "b.mp4",
+        "nb_streams": 2,
+        "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+        "format_long_name": "QuickTime / MOV",
+        "duration": "13.265000",
+        "size": "1196650",
+        "bit_rate": "721688",
+        "probe_score": 100,
+        "tags": {
+            "major_brand": "mp42",
+            "creation_time": "2022-11-24T01:08:36.000000Z"
+        }
+    }
+}

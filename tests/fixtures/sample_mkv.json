@@ -1,0 +1,103 @@
+{
+    "streams": [
+        {
+            "index": 0,
+            "codec_name": "hevc",
+            "profile": "Main 10",
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "pix_fmt": "yuv420p10le",
+            "color_space": "bt709",
+            "color_range": "tv",
+            "r_frame_rate": "24000/1001",
+            "avg_frame_rate": "24000/1001",
+            "duration": "7200.000000",
+            "bit_rate": "8000000",
+            "bits_per_raw_sample": "10",
+            "nb_frames": "172560",
+            "disposition": { "default": 1, "attached_pic": 0 },
+            "tags": {
+                "language": "und",
+                "rotate": "90"
+            },
+            "side_data_list": []
+        },
+        {
+            "index": 1,
+            "codec_name": "aac",
+            "profile": "LC",
+            "codec_type": "audio",
+            "sample_rate": "48000",
+            "channels": 2,
+            "channel_layout": "stereo",
+            "bit_rate": "192000",
+            "disposition": { "default": 1 },
+            "tags": {
+                "language": "eng",
+                "title": "English"
+            }
+        },
+        {
+            "index": 2,
+            "codec_name": "aac",
+            "profile": "LC",
+            "codec_type": "audio",
+            "sample_rate": "48000",
+            "channels": 2,
+            "channel_layout": "stereo",
+            "bit_rate": "192000",
+            "disposition": { "default": 0 },
+            "tags": {
+                "language": "jpn",
+                "title": "Japanese"
+            }
+        },
+        {
+            "index": 3,
+            "codec_name": "subrip",
+            "codec_type": "subtitle",
+            "disposition": { "default": 1, "forced": 0 },
+            "tags": {
+                "language": "eng",
+                "title": "English SDH"
+            }
+        },
+        {
+            "index": 4,
+            "codec_name": "hdmv_pgs_subtitle",
+            "codec_type": "subtitle",
+            "disposition": { "default": 0, "forced": 1 },
+            "tags": {
+                "language": "jpn"
+            }
+        }
+    ],
+    "chapters": [
+        {
+            "id": 0,
+            "start_time": "0.000000",
+            "end_time": "90.000000",
+            "tags": { "title": "Opening" }
+        },
+        {
+            "id": 1,
+            "start_time": "90.000000",
+            "end_time": "7200.000000",
+            "tags": { "title": "Main Feature" }
+        }
+    ],
+    "format": {
+        "filename": "movie.mkv",
+        "nb_streams": 5,
+        "format_name": "matroska,webm",
+        "format_long_name": "Matroska / WebM",
+        "duration": "7200.000000",
+        "size": "7500000000",
+        "bit_rate": "8333333",
+        "tags": {
+            "encoder": "libebml v1.4.2 + libmatroska v1.6.4",
+            "creation_time": "2024-01-15T12:00:00.000000Z"
+        }
+    }
+}

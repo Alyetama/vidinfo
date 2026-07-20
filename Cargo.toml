@@ -1,0 +1,29 @@
+[package]
+name = "vidinfo"
+version = "0.1.0"
+edition = "2021"
+description = "Friendly, well-organized video file inspector (ffprobe-powered)"
+license = "MIT"
+readme = "README.md"
+homepage = "https://Alyetama.github.io/vidinfo"
+repository = "https://github.com/Alyetama/vidinfo"
+keywords = ["video", "ffprobe", "media", "cli", "metadata"]
+categories = ["command-line-utilities", "multimedia"]
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+comfy-table = "7"
+glob = "0.3"
+owo-colors = "4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+
+[dev-dependencies]
+pretty_assertions = "1"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
