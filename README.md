@@ -12,12 +12,14 @@ vidinfo clip.mp4
 
 ```
 clip.mp4
+  /Users/you/Movies/clip.mp4
 
 Container
   Format         MP4
   Size           1.14 MB
   Duration       00:00:13.265
   Bitrate        722 kbps
+  Streams        1 video, 1 audio, 0 subtitle
 
 Video
   Codec          H.264 High
